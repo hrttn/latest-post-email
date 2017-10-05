@@ -9,8 +9,8 @@
  * @link       https://www.wpelk.com
  * @since      1.0.0
  *
- * @package    Lastest_Post_Email
- * @subpackage Lastest_Post_Email/includes
+ * @package    Latest_Post_Email
+ * @subpackage Latest_Post_Email/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Lastest_Post_Email
- * @subpackage Lastest_Post_Email/includes
- * @author     WP Elk <hugo@hugorettien.com>
+ * @package    Latest_Post_Email
+ * @subpackage Latest_Post_Email/includes
+ * @author     WP Elk <admin@wpelk.com>
  */
-class Lastest_Post_Email {
+class Latest_Post_Email {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Lastest_Post_Email {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Lastest_Post_Email_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Latest_Post_Email_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -72,7 +72,7 @@ class Lastest_Post_Email {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'lastest-post-email';
+		$this->plugin_name = 'latest-post-email';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -86,10 +86,10 @@ class Lastest_Post_Email {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Lastest_Post_Email_Loader. Orchestrates the hooks of the plugin.
-	 * - Lastest_Post_Email_i18n. Defines internationalization functionality.
-	 * - Lastest_Post_Email_Admin. Defines all hooks for the admin area.
-	 * - Lastest_Post_Email_Public. Defines all hooks for the public side of the site.
+	 * - Latest_Post_Email_Loader. Orchestrates the hooks of the plugin.
+	 * - Latest_Post_Email_i18n. Defines internationalization functionality.
+	 * - Latest_Post_Email_Admin. Defines all hooks for the admin area.
+	 * - Latest_Post_Email_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -103,33 +103,33 @@ class Lastest_Post_Email {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lastest-post-email-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-latest-post-email-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-lastest-post-email-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-latest-post-email-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-lastest-post-email-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-latest-post-email-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-lastest-post-email-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-latest-post-email-public.php';
 
-		$this->loader = new Lastest_Post_Email_Loader();
+		$this->loader = new Latest_Post_Email_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Lastest_Post_Email_i18n class in order to set the domain and to register the hook
+	 * Uses the Latest_Post_Email_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -137,7 +137,7 @@ class Lastest_Post_Email {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Lastest_Post_Email_i18n();
+		$plugin_i18n = new Latest_Post_Email_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -152,7 +152,7 @@ class Lastest_Post_Email {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Lastest_Post_Email_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Latest_Post_Email_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -168,7 +168,7 @@ class Lastest_Post_Email {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Lastest_Post_Email_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Latest_Post_Email_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -199,7 +199,7 @@ class Lastest_Post_Email {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Lastest_Post_Email_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Latest_Post_Email_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

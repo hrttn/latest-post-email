@@ -22,7 +22,7 @@
  * @link       https://www.wpelk.com
  * @since      1.0.0
  *
- * @package    Lastest_Post_Email
+ * @package    Latest_Post_Email
  */
 
 // If uninstall not called from WordPress, then exit.

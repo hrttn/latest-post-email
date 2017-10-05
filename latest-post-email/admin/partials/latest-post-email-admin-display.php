@@ -8,8 +8,8 @@
  * @link       https://www.wpelk.com
  * @since      1.0.0
  *
- * @package    Lastest_Post_Email
- * @subpackage Lastest_Post_Email/admin/partials
+ * @package    Latest_Post_Email
+ * @subpackage Latest_Post_Email/admin/partials
  */
 ?>
 

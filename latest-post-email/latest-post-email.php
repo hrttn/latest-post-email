@@ -10,7 +10,7 @@
  *
  * @link              https://www.wpelk.com
  * @since             1.0.0
- * @package           Lastest_Post_Email
+ * @package           Latest_Post_Email
  *
  * @wordpress-plugin
  * Plugin Name:       Latest Post in Email
@@ -21,7 +21,7 @@
  * Author URI:        https://www.wpelk.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       lastest-post-email
+ * Text Domain:       latest-post-email
  * Domain Path:       /languages
  */
 
@@ -34,30 +34,30 @@ define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-lastest-post-email-activator.php
+ * This action is documented in includes/class-latest-post-email-activator.php
  */
-function activate_lastest_post_email() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-lastest-post-email-activator.php';
-	Lastest_Post_Email_Activator::activate();
+function activate_latest_post_email() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-latest-post-email-activator.php';
+	Latest_Post_Email_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-lastest-post-email-deactivator.php
+ * This action is documented in includes/class-latest-post-email-deactivator.php
  */
-function deactivate_lastest_post_email() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-lastest-post-email-deactivator.php';
-	Lastest_Post_Email_Deactivator::deactivate();
+function deactivate_latest_post_email() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-latest-post-email-deactivator.php';
+	Latest_Post_Email_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_lastest_post_email' );
-register_deactivation_hook( __FILE__, 'deactivate_lastest_post_email' );
+register_activation_hook( __FILE__, 'activate_latest_post_email' );
+register_deactivation_hook( __FILE__, 'deactivate_latest_post_email' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-lastest-post-email.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-latest-post-email.php';
 
 /**
  * Begins execution of the plugin.
@@ -68,10 +68,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-lastest-post-email.php';
  *
  * @since    1.0.0
  */
-function run_lastest_post_email() {
+function run_latest_post_email() {
 
-	$plugin = new Lastest_Post_Email();
+	$plugin = new Latest_Post_Email();
 	$plugin->run();
 
 }
-run_lastest_post_email();
+run_latest_post_email();

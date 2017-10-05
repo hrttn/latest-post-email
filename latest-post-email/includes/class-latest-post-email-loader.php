@@ -6,8 +6,8 @@
  * @link       https://www.wpelk.com
  * @since      1.0.0
  *
- * @package    Lastest_Post_Email
- * @subpackage Lastest_Post_Email/includes
+ * @package    Latest_Post_Email
+ * @subpackage Latest_Post_Email/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Lastest_Post_Email
- * @subpackage Lastest_Post_Email/includes
- * @author     WP Elk <hugo@hugorettien.com>
+ * @package    Latest_Post_Email
+ * @subpackage Latest_Post_Email/includes
+ * @author     WP Elk <admin@wpelk.com>
  */
-class Lastest_Post_Email_Loader {
+class Latest_Post_Email_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

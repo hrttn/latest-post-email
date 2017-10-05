@@ -6,8 +6,8 @@
  * @link       https://www.wpelk.com
  * @since      1.0.0
  *
- * @package    Lastest_Post_Email
- * @subpackage Lastest_Post_Email/includes
+ * @package    Latest_Post_Email
+ * @subpackage Latest_Post_Email/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Lastest_Post_Email
- * @subpackage Lastest_Post_Email/includes
- * @author     WP Elk <hugo@hugorettien.com>
+ * @package    Latest_Post_Email
+ * @subpackage Latest_Post_Email/includes
+ * @author     WP Elk <admin@wpelk.com>
  */
-class Lastest_Post_Email_Deactivator {
+class Latest_Post_Email_Deactivator {
 
 	/**
 	 * Short Description. (use period)
