@@ -100,4 +100,36 @@ class Latest_Post_Email_Public {
 
 	}
 
+
+	public function add_latest_post_to_mail( $args ) {
+	
+		$latest_post = $this->get_latest_published_post();
+		$post_url = get_post_permalink($latest_post->ID, true);
+
+		$message = $args['message'] . "<p style='text-align: center;'><a href='".$post_url."'>".$latest_post->post_title."</a>";
+
+		$new_wp_mail = array(
+			'to'          => $args['to'],
+			'subject'     => $args['subject'],
+			'message'     => $message,
+			'headers'     => $args['headers'],
+			'attachments' => $args['attachments'],
+		);
+		
+		return $new_wp_mail;
+	}
+
+	private function get_latest_published_post() {
+		$args = array(
+			'post_status'	=> 'publish',
+			'numberposts'	=> 1,
+			'orderby'		=> 'date',
+			'order'			=> 'DESC',
+			'post_type'		=> 'post'
+		);
+		
+		$latest_posts = get_posts( $args );
+		return get_post($latest_posts[0]);
+	}
+
 }
