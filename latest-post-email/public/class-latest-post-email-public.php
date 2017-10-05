@@ -105,8 +105,14 @@ class Latest_Post_Email_Public {
 	
 		$latest_post = $this->get_latest_published_post();
 		$post_url = get_post_permalink($latest_post->ID, true);
+		$content_type = $this->get_content_type($args['headers']);
 
-		$message = $args['message'] . "<p style='text-align: center;'><a href='".$post_url."'>".$latest_post->post_title."</a>";
+		if('text/plain' == $content_type) {
+			$message = $args['message'] . "\n\n Latest post: " . $post_url;
+		} else {
+			$message = $args['message'] . "<p style='text-align: center;'><a href='".$post_url."'>".$latest_post->post_title."</a>";
+
+		}
 
 		$new_wp_mail = array(
 			'to'          => $args['to'],
@@ -132,4 +138,49 @@ class Latest_Post_Email_Public {
 		return get_post($latest_posts[0]);
 	}
 
+	private function get_content_type($mail_headers) {
+
+		$headers = array();
+		if ( isset( $mail_headers ) ) {
+			if ( is_array( $mail_headers ) ) {
+				$headers = $mail_headers;
+			} else {
+				$headers = explode( "\n", str_replace( "\r\n", "\n", $mail_headers ) );
+			}
+		}
+	 
+		foreach ( $headers as $header ) {
+			if ( strpos($header, ':') === false ) {
+				continue;
+			}
+	 
+			// Explode them out.
+			list( $name, $content ) = explode( ':', trim( $header ), 2 );
+			 
+			// Cleanup crew.
+			$name    = trim( $name    );
+			$content = trim( $content );
+
+			if ( 'content-type' === strtolower( $name ) ) {
+				if ( strpos( $content, ';' ) !== false ) {
+					list( $type, $charset ) = explode( ';', $content );
+			 		$content_type = trim( $type );
+				} else {
+					$content_type = trim( $content );
+				}
+				break;
+			}
+		}
+	 
+		// Set Content-Type if we don't have a content-type from the input headers.
+		if ( ! isset( $content_type ) ) {
+			$content_type = 'text/plain';
+		}
+
+		/** This filter is documented in wp-includes/pluggable.php */
+		$content_type = apply_filters( 'wp_mail_content_type', $content_type );
+		return $content_type;
+	}
 }
+
+	
