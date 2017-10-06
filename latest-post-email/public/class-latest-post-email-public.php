@@ -100,7 +100,13 @@ class Latest_Post_Email_Public {
 
 	}
 
-
+	/**
+	 * Add the latest published post to emails sent.
+	 *
+	 * @since    1.0.1
+	 * @var	array $args original mail array
+	 * @return	array $new_wp_mail the new mail array with the added text
+	 */
 	public function add_latest_post_to_mail( $args ) {
 	
 		$latest_post = $this->get_latest_published_post();
@@ -125,6 +131,14 @@ class Latest_Post_Email_Public {
 		return $new_wp_mail;
 	}
 
+	
+	/**
+	 * Get the latest published post of the blog
+	 *
+	 * @since    1.0.1
+	 * @access   private
+	 * @return	object WP_Post the latest post published by date
+	 */
 	private function get_latest_published_post() {
 		$args = array(
 			'post_status'	=> 'publish',
@@ -137,7 +151,15 @@ class Latest_Post_Email_Public {
 		$latest_posts = get_posts( $args );
 		return get_post($latest_posts[0]);
 	}
-
+	
+	/**
+	 * Get the content type of an email from the headers
+	 *
+	 * @since    1.0.1
+	 * @access   private
+	 * @var      (array|string)    $mail_hearders    headers of the email to check
+	 * @return	string $content_type the content type of the email
+	 */
 	private function get_content_type($mail_headers) {
 
 		$headers = array();
