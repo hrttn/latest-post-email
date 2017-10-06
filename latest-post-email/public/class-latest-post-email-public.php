@@ -110,8 +110,9 @@ class Latest_Post_Email_Public {
 	public function add_latest_post_to_mail( $args ) {
 	
 		$latest_post = $this->get_latest_published_post();
-		$post_url = get_post_permalink( $latest_post->ID, true );
-		$content_type = $this->get_content_type( $args['headers']) ;
+		$post_url = get_post_permalink( $latest_post->ID );
+		$post_title = apply_filters( 'the_title', $latest_post->post_title )
+		$content_type = $this->get_content_type( $args['headers'] ) ;
 		$message = $args['message'];
 		
 		//If there is a blog post
@@ -119,7 +120,7 @@ class Latest_Post_Email_Public {
 			if( 'text/plain' == $content_type ) {
 				$message .= "\n\n Latest post: " . $post_url;
 			} else {
-				$message .=  "<p style='text-align: center;'><a href='".$post_url."'>".$latest_post->post_title."</a>";
+				$message .=  "<p style='text-align: center;'><a href='".$post_url."'>". $post_title ."</a>";
 			}
 		}
 
